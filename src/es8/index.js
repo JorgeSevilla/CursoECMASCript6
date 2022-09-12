@@ -102,3 +102,54 @@ console.log(entries.length);
 const string = 'Hello';
 console.log(string.padStart(7, 'Hi'));
 console.log(string.padStart(12, ' ----- '));
+
+/*
+En ES8 fue añadida una nueva forma de manejar el asincronismo en JavaScript mediante funciones. 
+La función asíncrona se crea mediante la palabra reservada async y retorna una promesa.
+
+async function asyncFunction () {...}
+
+const asyncFunction = async () => { ... } 
+Await significa que espera hasta que una promesa sea resuelta y solo funcionan dentro de una función asíncrona.
+Los bloques try / catch sirven para manejar si la promesa ha sido resuelta o rechazada.
+
+async function asyncFunction () {
+  try {
+    const response = await promesa()
+    return response
+    }
+  } catch (error) {
+    return error
+  }
+}
+¿Cuál es la mejor forma de manejar promesas, then o async / await? Ambas son muy útiles, 
+manejar ambas te hará un mejor desarrollador o desarrolladora.
+
+*/
+
+//Trabajando cn el asincronismo
+const helloWorld = () => {
+  return new Promise((resolve, reject) =>{
+    (true)
+        ? setTimeout(() => resolve('Hello World'), 3000)
+        : reject(new Error('Test Error'))
+  })
+};
+
+const helloAsync = async () => {
+    const hello = await helloWorld();
+    console.log(hello);
+}
+
+helloAsync();
+
+const anotherFunction = async () => {
+    try{
+        const hello = await helloWorld();
+        console.log(hello);
+    } catch (error) {
+        console.log(error);
+    }
+} 
+
+anotherFunction();
